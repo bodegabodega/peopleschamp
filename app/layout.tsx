@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import "./globals.css";
+import PrimaryNavigation from "@/lib/components/primary-navigation";
+import AudioPlayerComponent from "@/lib/components/audio-player";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,27 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <nav className="sticky top-0 z-50 flex items-center justify-between px-4 py-3">
-          <div className="flex items-center">
-            <Image
-              src="/logo.svg"
-              alt="Logo"
-              width={120}
-              height={40}
-              className="w-35 h-auto"
-            />
-          </div>
-          <Link href="/profile" className="text-gray-700 hover:text-black">
-            <Image
-              src="/user.svg"
-              alt="User Icon"
-              width={120}
-              height={40}
-              className="w-5 h-auto"
-            />
-          </Link>
-        </nav>
+        {<PrimaryNavigation />}
         {children}
+        <footer className="fixed bottom-0 left-0 w-full z-50">
+          {<AudioPlayerComponent />}
+        </footer>
       </body>
     </html>
   );

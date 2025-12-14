@@ -1,5 +1,6 @@
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
 import { BLOCKS } from "@contentful/rich-text-types";
+import { JSX } from "react";
 
 const options = {
   renderNode: {
@@ -11,7 +12,11 @@ const options = {
   },
 };
 
-export default function render(data: Record<string, any>, index: number) {
-  const htmlString = documentToHtmlString(data.content.json, options)
-  return <div key={index} dangerouslySetInnerHTML={{ __html: htmlString }} />;
+type BodyTextProps = {
+  block: BodyText
+}
+
+export default function BodyTextComponent(props: BodyTextProps): JSX.Element {
+  const htmlString = documentToHtmlString(props.block.content.json, options)
+  return <div dangerouslySetInnerHTML={{ __html: htmlString }} />;
 }

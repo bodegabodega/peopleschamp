@@ -16,14 +16,16 @@ type Page = PageSummary & {
   }
 }
 
+type AudioTrack = {
+  name: string
+  url: string
+}
+
 type AudioPlaylist = {
   __typename: "AudioPlaylist"
   name: string
   itemsCollection: {
-    items: {
-      name: string
-      url: string
-    }[]
+    items: AudioTrack[]
   }
 }
 

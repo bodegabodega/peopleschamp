@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import { pageBySlug } from "@/lib/content/fetch"
-import blocks from "@/lib/content/blocks"
+import BodyText from "@/lib/content/blocks/body-text"
+import AudioPlaylistComponent from "@/lib/content/blocks/audio-playlist"
 
 export default async function Page({
   params,
@@ -30,7 +31,14 @@ export default async function Page({
       <div>
         {
           page.contentBlocksCollection.items.map((block, index) => {
-            return blocks(block.__typename, block, index)
+            switch (block.__typename) {
+              case "BodyText":
+                return <BodyText key={index} block={block} />
+              case "AudioPlaylist":
+                return <AudioPlaylistComponent playlist={block} />
+              default:
+                console.warn(`Unknown block: ${block}`)
+            }
           })
         }
       </div>
