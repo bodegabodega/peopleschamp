@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import { pageBySlug } from "@/lib/content/fetch"
 import BodyText from "@/lib/content/blocks/body-text"
 import AudioPlaylistComponent from "@/lib/content/blocks/audio-playlist"
+import TracklistComponent from "@/lib/content/blocks/tracklist"
 
 export default async function Page({
   params,
@@ -35,9 +36,12 @@ export default async function Page({
               case "BodyText":
                 return <BodyText key={index} block={block} />
               case "AudioPlaylist":
-                return <AudioPlaylistComponent playlist={block} />
+                return <AudioPlaylistComponent block={block} />
+              case "Tracklist":
+                return <TracklistComponent block={block} />
               default:
-                console.warn(`Unknown block: ${block}`)
+                console.warn(`Unknown block: ${JSON.stringify(block, null, 2)}`);
+                return null;
             }
           })
         }

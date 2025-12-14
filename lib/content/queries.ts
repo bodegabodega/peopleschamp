@@ -47,6 +47,9 @@ export const pageBySlug: TypedDocumentNode = parse(gql`
                 json
               }
             }
+            ... on Tracklist {
+              tracks
+            }
           }
         }
       }

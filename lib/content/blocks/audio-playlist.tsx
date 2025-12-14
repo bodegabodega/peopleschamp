@@ -5,15 +5,15 @@ import { useAudioPlayerStore } from '@/lib/stores/audio-player-store';
 import { JSX } from 'react';
 
 type AudioPlaylistProps = {
-  playlist: AudioPlaylist;
+  block: AudioPlaylist;
 }
 
-export default function AudioPlaylistComponent({ playlist }: AudioPlaylistProps): JSX.Element {
+export default function AudioPlaylistComponent({ block }: AudioPlaylistProps): JSX.Element {
   const playTrack = (track: AudioTrack) => {
     useAudioPlayerStore.getState().setTrack(track);
   }
 
-  const tracks = playlist.itemsCollection.items;
+  const tracks = block.itemsCollection.items;
   return (
     <ol className="border border-gray-300 rounded-md divide-y divide-gray-200 overflow-hidden">
       {tracks.map((track, i) => {
