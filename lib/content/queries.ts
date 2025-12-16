@@ -8,7 +8,7 @@ import { parse } from 'graphql'
  */
 export const allPages: TypedDocumentNode = parse(gql`
   {
-    pageCollection {
+    pageCollection(order: [date_DESC]) {
       items {
         title
         slug
@@ -49,6 +49,14 @@ export const pageBySlug: TypedDocumentNode = parse(gql`
             }
             ... on Tracklist {
               tracks
+            }
+            ... on Slideshow {
+              name,
+              imagesCollection {
+                items {
+                  url
+                }
+              }
             }
           }
         }
