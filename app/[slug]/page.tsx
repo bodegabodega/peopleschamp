@@ -4,6 +4,12 @@ import BodyText from "@/lib/content/blocks/body-text"
 import AudioPlaylistComponent from "@/lib/content/blocks/audio-playlist"
 import TracklistComponent from "@/lib/content/blocks/tracklist"
 import SlideshowComponent from "@/lib/content/blocks/slideshow"
+import font from "next/font/local"
+import clsx from "clsx"
+
+const calSans = font({
+  src: "../../lib/fonts/CalSans-Regular.ttf"
+});
 
 export default async function Page({
   params,
@@ -18,7 +24,10 @@ export default async function Page({
   return <div>
     <div className="max-w-3xl mx-auto px-4 py-12">
       {/* Headline */}
-      <h1 className="text-4xl font-bold tracking-tight text-gray-900 mb-2">
+      <h1 className={clsx(
+        "text-6xl text-gray-900 mb-2 text-shadow-cyan",
+        calSans.className
+      )}>
         {page.title}
       </h1>
 

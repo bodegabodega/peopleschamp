@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 import PrimaryNavigation from "@/lib/components/primary-navigation";
 import AudioPlayerComponent from "@/lib/components/audio-player";
+import { Open_Sans } from "next/font/google";
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-open-sans",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={openSans.className}>
       <body>
         {<PrimaryNavigation />}
         {children}
