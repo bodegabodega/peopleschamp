@@ -12,7 +12,7 @@ type PageSummary = {
 type Page = PageSummary & {
   date: string
   contentBlocksCollection: {
-    items: (AudioPlaylist | BodyText | Tracklist | Slideshow)[]
+    items: ContentBlock[]
   }
 }
 
@@ -48,6 +48,8 @@ type Slideshow = {
     items: Image[]
   }
 }
+
+type ContentBlock = AudioPlaylist | BodyText | Tracklist | Slideshow;
 
 type AllPagesResponse = {
   pageCollection: {

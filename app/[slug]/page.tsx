@@ -1,15 +1,20 @@
 import { notFound } from "next/navigation"
 import { pageBySlug } from "@/lib/content/fetch"
-import BodyText from "@/lib/content/blocks/body-text"
-import AudioPlaylistComponent from "@/lib/content/blocks/audio-playlist"
-import TracklistComponent from "@/lib/content/blocks/tracklist"
-import SlideshowComponent from "@/lib/content/blocks/slideshow"
 import font from "next/font/local"
 import clsx from "clsx"
+import { Switch, Case } from "@/lib/operators/switch"
+import StackComponent from "@/lib/content/blocks/stack"
+
+enum LayoutType {
+  OneColumn,
+  TwoColumn
+}
 
 const calSans = font({
   src: "../../lib/fonts/CalSans-Regular.ttf"
 });
+
+const twoColumnLayoutTypes = ['AudioPlaylist'];
 
 export default async function Page({
   params,
@@ -21,6 +26,7 @@ export default async function Page({
   if (!page) {
     notFound()
   }
+  const layoutType: LayoutType = twoColumnLayoutTypes.includes(page.contentBlocksCollection.items[0]?.__typename) ? LayoutType.TwoColumn : LayoutType.OneColumn;
   return <div>
     <div className="max-w-3xl mx-auto px-4 py-12">
       {/* Headline */}
@@ -39,25 +45,25 @@ export default async function Page({
       )}
 
       {/* Body content */}
-      <div>
-        {
-          page.contentBlocksCollection.items.map((block, index) => {
-            switch (block.__typename) {
-              case "BodyText":
-                return <BodyText key={index} block={block} />
-              case "AudioPlaylist":
-                return <AudioPlaylistComponent key={index} block={block} />
-              case "Tracklist":
-                return <TracklistComponent key={index}  block={block} />
-              case "Slideshow":
-                return <SlideshowComponent key={index} block={block} />
-              default:
-                console.warn(`Unknown block: ${JSON.stringify(block, null, 2)}`);
-                return null;
-            }
-          })
-        }
-      </div>
+      <Switch<LayoutType> test={layoutType}>
+        <Case<LayoutType> value={LayoutType.OneColumn}>
+          <StackComponent blocks={page.contentBlocksCollection.items} />
+        </Case>
+        <Case<LayoutType> value={LayoutType.TwoColumn}>
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-6">
+            {/* Left / Main content */}
+            <main className="order-2 md:order-1">
+              <StackComponent blocks={page.contentBlocksCollection.items.slice(1)} />
+            </main>
+
+            {/* Right / Sidebar */}
+            <aside className="order-1 md:order-2">
+              <StackComponent blocks={page.contentBlocksCollection.items.slice(0, 1)} />
+            </aside>
+          </div>
+          {/* <StackComponent blocks={page.contentBlocksCollection.items} /> */}
+        </Case>
+      </Switch>
     </div>
   </div>
 }
