@@ -28,7 +28,7 @@ export default async function Page({
   }
   const layoutType: LayoutType = twoColumnLayoutTypes.includes(page.contentBlocksCollection.items[0]?.__typename) ? LayoutType.TwoColumn : LayoutType.OneColumn;
   return <div>
-    <div className="max-w-3xl mx-auto px-4 py-12">
+    <div className="max-w-5xl mx-auto px-4 py-12">
       {/* Headline */}
       <h1 className={clsx(
         "text-6xl text-gray-900 mb-2 text-shadow-cyan",

@@ -25,9 +25,7 @@ export default function RootLayout({
       <body>
         {<PrimaryNavigation />}
         {children}
-        <footer className="fixed bottom-0 left-0 w-full z-50">
-          {<AudioPlayerComponent />}
-        </footer>
+        {<AudioPlayerComponent />}
       </body>
     </html>
   );
