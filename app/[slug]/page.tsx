@@ -1,18 +1,14 @@
 import { notFound } from "next/navigation"
 import { pageBySlug } from "@/lib/content/fetch"
-import font from "next/font/local"
-import clsx from "clsx"
 import { Switch, Case } from "@/lib/operators/switch"
 import StackComponent from "@/lib/content/blocks/stack"
+import Header from "@/lib/components/header"
 
 enum LayoutType {
   OneColumn,
   TwoColumn
 }
 
-const calSans = font({
-  src: "../../lib/fonts/CalSans-Regular.ttf"
-});
 
 const twoColumnLayoutTypes = ['AudioPlaylist'];
 
@@ -30,12 +26,9 @@ export default async function Page({
   return <div>
     <div className="max-w-5xl mx-auto px-4 py-12">
       {/* Headline */}
-      <h1 className={clsx(
-        "text-6xl text-gray-900 mb-2 text-shadow-cyan",
-        calSans.className
-      )}>
+      <Header>
         {page.title}
-      </h1>
+      </Header>
 
       {/* Detail line */}
       {page.date && (

@@ -2,13 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import PrimaryNavigation from "@/lib/components/primary-navigation";
 import AudioPlayerComponent from "@/lib/components/audio-player";
-import { Open_Sans } from "next/font/google";
+import { openSans } from "@/lib/fonts";
 
-const openSans = Open_Sans({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-open-sans",
-});
+
 
 export const metadata: Metadata = {
   title: "Peoples Champ",

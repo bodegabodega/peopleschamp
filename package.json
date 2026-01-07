@@ -19,6 +19,7 @@
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-h5-audio-player": "^3.10.1",
+    "ts-audio": "^0.7.9",
     "zustand": "^5.0.9"
   },
   "devDependencies": {
