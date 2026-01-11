@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { useAudioPlayer } from "react-use-audio-player";
 
 type PlayerState = {
   currentTrack: AudioTrack | null;
@@ -8,6 +9,8 @@ type PlayerState = {
   pause: () => void;
   togglePlay: () => void;
 };
+
+const { load } = useAudioPlayer()
 
 export const useAudioPlayerStore = create<PlayerState>((set, get) => ({
   currentTrack: null,

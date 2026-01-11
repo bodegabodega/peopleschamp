@@ -3,14 +3,20 @@
 import Image from 'next/image';
 import { useAudioPlayerStore } from '@/lib/stores/audio-player-store';
 import { JSX } from 'react';
+import { useAudioPlayer } from 'react-use-audio-player';
 
 type AudioPlaylistProps = {
   block: AudioPlaylist;
 }
 
 export default function AudioPlaylistComponent({ block }: AudioPlaylistProps): JSX.Element {
+  const { load } = useAudioPlayer()
+  
   const playTrack = (track: AudioTrack) => {
-    useAudioPlayerStore.getState().setTrack(track);
+    // useAudioPlayerStore.getState().setTrack(track);
+    load(track.url, {
+      autoplay: true
+    })
   }
 
   const tracks = block.itemsCollection.items;
