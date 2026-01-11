@@ -1,0 +1,8 @@
+.rhap_progress-bar,
+.rhap_progress-container {
+  height: 100%;
+}
+
+.rhap_progress-indicator {
+  display: none;
+}
