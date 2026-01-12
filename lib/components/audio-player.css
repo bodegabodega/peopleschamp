@@ -3,6 +3,20 @@
   height: 100%;
 }
 
+.rhap_controls-section {
+  flex: 0;
+}
+
 .rhap_progress-indicator {
   display: none;
+}
+
+.rhap_progress-container {
+  margin: 0 10px 0 0;
+}
+
+.song-label {
+  position: absolute;
+  margin-left: 1rem;
+  pointer-events: none;
 }

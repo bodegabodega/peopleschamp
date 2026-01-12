@@ -32,12 +32,12 @@ export default function AudioPlayerComponent() {
         layout='horizontal-reverse'
         showJumpControls={false}
         showSkipControls={false}
-        customControlsSection={[RHAP_UI.MAIN_CONTROLS, RHAP_UI.ADDITIONAL_CONTROLS]}
-        // customControlsSection={[RHAP_UI.MAIN_CONTROLS]}
+        // customControlsSection={[RHAP_UI.MAIN_CONTROLS, RHAP_UI.ADDITIONAL_CONTROLS]}
+        customControlsSection={[RHAP_UI.MAIN_CONTROLS]}
         customAdditionalControls={[
           <Marquee>{currentTrack?.name}</Marquee>
         ]}
-        customProgressBarSection={[RHAP_UI.CURRENT_TIME, RHAP_UI.PROGRESS_BAR, RHAP_UI.DURATION]}
+        customProgressBarSection={[RHAP_UI.PROGRESS_BAR, <div className="song-label">Song Name HEre</div>, RHAP_UI.DURATION]}
         customIcons={{
           play: <Image
             src="/play.svg"
