@@ -3,6 +3,10 @@
   height: 100%;
 }
 
+.rhap_progress-filled {
+  background-color: black;
+}
+
 .rhap_controls-section {
   flex: 0;
 }
@@ -19,4 +23,7 @@
   position: absolute;
   margin-left: 1rem;
   pointer-events: none;
+  color: black;
+  mix-blend-mode: difference;
+  filter: invert(1);
 }

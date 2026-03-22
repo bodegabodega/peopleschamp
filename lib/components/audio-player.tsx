@@ -16,19 +16,32 @@ export default function AudioPlayerComponent() {
   const currentTrack: AudioTrack | null = useAudioPlayerStore((state) => state.currentTrack);
   const isPlaying = useAudioPlayerStore((state) => state.isPlaying);
   const pause = useAudioPlayerStore((state) => state.pause);
+  const clearTrack = useAudioPlayerStore((state) => state.clearTrack);
+  const playNext = useAudioPlayerStore((state) => state.playNext);
+  const playerRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (currentTrack) {
+      playerRef.current?.audio?.current?.play();
+    } else {
+      playerRef.current?.audio?.current?.pause();
+    }
+  }, [currentTrack]);
+
   return (
     <footer
       className={clsx(
         "fixed bottom-0 left-0 w-full z-50",
         "bg-white shadow-lg",
         "transform transition-transform duration-300 ease-out",
-        // isPlaying ? "translate-y-0" : "translate-y-full"
-        true ? "translate-y-0" : "translate-y-full"
+        currentTrack ? "translate-y-0" : "translate-y-full"
       )}>
       <AudioPlayer
+        ref={playerRef}
         onPlay={e => console.log("onPlay")}
-        src={currentTrack ? currentTrack.url : undefined}
-        autoPlayAfterSrcChange={true}
+        onEnded={playNext}
+        src={currentTrack?.url}
+        autoPlayAfterSrcChange={false}
         layout='horizontal-reverse'
         showJumpControls={false}
         showSkipControls={false}
@@ -37,7 +50,7 @@ export default function AudioPlayerComponent() {
         customAdditionalControls={[
           <Marquee>{currentTrack?.name}</Marquee>
         ]}
-        customProgressBarSection={[RHAP_UI.PROGRESS_BAR, <div className="song-label">Song Name HEre</div>, RHAP_UI.DURATION]}
+        customProgressBarSection={[RHAP_UI.PROGRESS_BAR, <div className="song-label">{currentTrack?.name}</div>, RHAP_UI.DURATION]}
         customIcons={{
           play: <Image
             src="/play.svg"
