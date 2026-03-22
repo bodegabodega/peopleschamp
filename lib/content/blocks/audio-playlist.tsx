@@ -9,8 +9,8 @@ type AudioPlaylistProps = {
 }
 
 export default function AudioPlaylistComponent({ block }: AudioPlaylistProps): JSX.Element {
-  const playTrack = (track: AudioTrack) => {
-    useAudioPlayerStore.getState().setTrack(track);
+  const playTrack = (track: AudioTrack, index: number) => {
+    useAudioPlayerStore.getState().setTrack(track, tracks.slice(index + 1));
   }
 
   const tracks = block.itemsCollection.items;
@@ -22,7 +22,7 @@ export default function AudioPlaylistComponent({ block }: AudioPlaylistProps): J
         return (
           <li key={i}>
             <button
-              onClick={() => playTrack(track)}
+              onClick={() => playTrack(track, i)}
               className={`
                 w-full flex items-center gap-3 text-left px-4 py-2
                 transition-all duration-200 ease-out
