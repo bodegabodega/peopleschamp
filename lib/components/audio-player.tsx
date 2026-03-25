@@ -32,7 +32,7 @@ export default function AudioPlayerComponent() {
     <footer
       className={clsx(
         "fixed bottom-0 left-0 w-full z-50",
-        "bg-white shadow-lg",
+        "bg-white dark:bg-[#1a1a1a] shadow-lg",
         "transform transition-transform duration-300 ease-out",
         currentTrack ? "translate-y-0" : "translate-y-full"
       )}>

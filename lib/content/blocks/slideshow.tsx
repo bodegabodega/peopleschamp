@@ -43,10 +43,10 @@ function SlideIndicator({ count, currentIndex }: { count: number; currentIndex: 
   const segmentWidth = 100 / count;
 
   return (
-    <div className="relative w-full h-0.5 bg-gray-300 rounded overflow-hidden">
+    <div className="relative w-full h-0.5 bg-gray-800 rounded overflow-hidden">
       {/* Highlight bar */}
       <div
-        className="absolute top-0 h-full bg-gray-800 transition-all duration-300 ease-out"
+        className="absolute top-0 h-full bg-gray-300 transition-all duration-300 ease-out"
         style={{
           width: `${segmentWidth}%`,
           left: `${currentIndex * segmentWidth}%`,

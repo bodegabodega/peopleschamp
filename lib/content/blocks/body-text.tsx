@@ -5,7 +5,7 @@ import { JSX } from "react";
 const options = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node: any, next: any) => {
-      return `<p class="mb-4 text-base leading-relaxed text-slate-800">${next(
+      return `<p class="mb-4 text-base leading-relaxed">${next(
         node.content
       )}</p>`;
     },

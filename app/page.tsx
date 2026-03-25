@@ -6,7 +6,7 @@ export default async function Home() {
   const pages = await allPages();
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 ps-4 pe-4 pt-0">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 ps-4 pe-4 pt-0">
       {pages.map((page) => (
         <Link
           key={page.slug}

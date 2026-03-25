@@ -15,7 +15,7 @@ export default function AudioPlaylistComponent({ block }: AudioPlaylistProps): J
 
   const tracks = block.itemsCollection.items;
   return (
-    <ol className="border border-gray-300 rounded-md divide-y divide-gray-200 overflow-hidden">
+    <ol className="border border-gray-300 dark:border-[#343434] rounded-md divide-y divide-gray-200 dark:divide-[#343434] overflow-hidden">
       {tracks.map((track, i) => {
         const isSelected = useAudioPlayerStore((state) => state.currentTrack?.url === track.url);
 
@@ -28,8 +28,8 @@ export default function AudioPlaylistComponent({ block }: AudioPlaylistProps): J
                 transition-all duration-200 ease-out
                 ${
                   isSelected
-                    ? "bg-blue-50 border-l-4 border-blue-500 font-medium scale-[1.01] shadow-sm"
-                    : "hover:bg-gray-50"
+                    ? "bg-blue-50 dark:bg-black border-l-4 border-blue-500 dark:border-black font-medium scale-[1.01] shadow-sm"
+                    : "hover:bg-gray-50 dark:hover:bg-black"
                 }
               `}
             >
@@ -40,7 +40,7 @@ export default function AudioPlaylistComponent({ block }: AudioPlaylistProps): J
                 width={20}
                 height={20}
                 className={`
-                  w-3 h-3 transition-colors duration-200
+                  w-3 h-3 transition-colors duration-200 dark:invert
                   ${isSelected ? "text-blue-600" : "text-gray-400 group-hover:text-gray-600"}
                 `}
               />

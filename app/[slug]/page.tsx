@@ -31,15 +31,17 @@ export default async function Page({
     <div className="max-w-5xl mx-auto px-4 py-12">
       {/* Headline */}
       <h1 className={clsx(
-        "text-6xl text-gray-900 mb-2 text-shadow-cyan",
+        "text-6xl mb-2 text-shadow-gold",
         calSans.className
-      )}>
+      )}
+        style={{ color: "#800000" }}
+      >
         {page.title}
       </h1>
 
       {/* Detail line */}
       {page.date && (
-        <p className="text-sm text-gray-500 mb-8">
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-8">
           12 Years Ago {/* Format date as "Month Day, Year" */}
         </p>
       )}
