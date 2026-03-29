@@ -49,7 +49,13 @@ type Slideshow = {
   }
 }
 
-type ContentBlock = AudioPlaylist | BodyText | Tracklist | Slideshow;
+type ImageWithMagnification = {
+  __typename: "ImageWithMagnification"
+  smallImageUrl: string
+  largeImageUrl: string
+}
+
+type ContentBlock = AudioPlaylist | BodyText | Tracklist | Slideshow | ImageWithMagnification;
 
 type AllPagesResponse = {
   pageCollection: {

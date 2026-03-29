@@ -58,6 +58,10 @@ export const pageBySlug: TypedDocumentNode = parse(gql`
                 }
               }
             }
+            ... on ImageWithMagnification {
+              smallImageUrl,
+              largeImageUrl
+            }
           }
         }
       }
