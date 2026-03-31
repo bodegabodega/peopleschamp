@@ -12,18 +12,20 @@ type PageSummary = {
 type Page = PageSummary & {
   date: string
   contentBlocksCollection: {
-    items: (AudioPlaylist | BodyText)[]
+    items: ContentBlock[]
   }
+}
+
+type AudioTrack = {
+  name: string
+  url: string
 }
 
 type AudioPlaylist = {
   __typename: "AudioPlaylist"
   name: string
   itemsCollection: {
-    items: {
-      name: string
-      url: string
-    }[]
+    items: AudioTrack[]
   }
 }
 
@@ -33,6 +35,27 @@ type BodyText = {
     json: any
   }
 }
+
+type Tracklist = {
+  __typename: "Tracklist"
+  tracks: string[]
+}
+
+type Slideshow = {
+  __typename: "Slideshow"
+  name: string
+  imagesCollection: {
+    items: Image[]
+  }
+}
+
+type ImageWithMagnification = {
+  __typename: "ImageWithMagnification"
+  smallImageUrl: string
+  largeImageUrl: string
+}
+
+type ContentBlock = AudioPlaylist | BodyText | Tracklist | Slideshow | ImageWithMagnification;
 
 type AllPagesResponse = {
   pageCollection: {
