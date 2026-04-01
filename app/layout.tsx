@@ -23,9 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={openSans.className}>
       <body>
-        {<PrimaryNavigation />}
-        {children}
-        {<AudioPlayerComponent />}
+        <PrimaryNavigation />
+        <main className="md:ml-72">
+          {children}
+        </main>
+        <AudioPlayerComponent />
       </body>
     </html>
   );
