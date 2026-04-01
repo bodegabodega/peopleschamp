@@ -38,7 +38,7 @@ export default async function Page({
       <Switch<LayoutType> test={layoutType}>
 
         <Case<LayoutType> value={LayoutType.OneColumn}>
-          <h1 className={clsx("text-6xl mb-2 text-shadow-gold", calSans.className)} style={{ color: "#800000" }}>
+          <h1 className={clsx("text-6xl mb-2 text-black dark:text-white", calSans.className)}>
             {page.title}
           </h1>
           {page.date && (
@@ -48,35 +48,24 @@ export default async function Page({
         </Case>
 
         <Case<LayoutType> value={LayoutType.ThreeColumn}>
-          <div className="grid grid-cols-1 md:grid-cols-[240px_1fr_320px] gap-6">
+          <h1 className={clsx("text-6xl mb-2 text-black dark:text-white", calSans.className)}>
+            {page.title}
+          </h1>
+          {page.date && (
+            <p className="text-sm text-gray-500 dark:text-gray-400">{timeAgo(page.date)}</p>
+          )}
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-6 mt-4">
 
-            {/* Title row: empty | title + date | empty */}
-            <div className="hidden md:block" />
-            <div>
-              <h1 className={clsx("text-6xl mb-2 text-shadow-gold", calSans.className)} style={{ color: "#800000" }}>
-                {page.title}
-              </h1>
-              {page.date && (
-                <p className="text-sm text-gray-500 dark:text-gray-400">{timeAgo(page.date)}</p>
-              )}
-            </div>
-            <div className="hidden md:block" />
-
-            {/* Content row */}
-            {/* Col 1: Hero — hidden on mobile */}
-            <div className="hidden md:block">
-              {page.heroImage && (
-                <img src={page.heroImage.url} alt={page.title} className="w-full rounded" />
-              )}
-            </div>
-
-            {/* Col 2: Body content */}
-            <main className="order-3 md:order-none">
+            {/* Col 1: Body content — below on mobile */}
+            <main className="order-2 md:order-none">
               <StackComponent blocks={bodyBlocks} />
             </main>
 
-            {/* Col 3: Playlist — above body on mobile */}
-            <aside className="order-2 md:order-none">
+            {/* Col 2: Artwork (desktop only) + Playlist — above body on mobile */}
+            <aside className="order-1 md:order-none">
+              {page.heroImage && (
+                <img src={page.heroImage.url} alt={page.title} className="hidden md:block w-full rounded mb-4" />
+              )}
               <StackComponent blocks={playlistBlocks} />
             </aside>
 
