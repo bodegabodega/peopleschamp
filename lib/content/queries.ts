@@ -62,6 +62,14 @@ export const pageBySlug: TypedDocumentNode = parse(gql`
               smallImageUrl,
               largeImageUrl
             }
+            ... on Video {
+              media {
+                url
+              },
+              poster {
+                url
+              }
+            }
           }
         }
       }

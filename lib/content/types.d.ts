@@ -55,7 +55,17 @@ type ImageWithMagnification = {
   largeImageUrl: string
 }
 
-type ContentBlock = AudioPlaylist | BodyText | Tracklist | Slideshow | ImageWithMagnification;
+type Video = {
+  __typename: "Video"
+  media: {
+    url: string
+  },
+  poster: {
+    url: string
+  }
+}
+
+type ContentBlock = AudioPlaylist | BodyText | Tracklist | Slideshow | ImageWithMagnification | Video;
 
 type AllPagesResponse = {
   pageCollection: {

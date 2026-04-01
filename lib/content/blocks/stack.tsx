@@ -4,6 +4,7 @@ import SlideshowComponent from "./slideshow";
 import BodyText from "./body-text";
 import TracklistComponent from "./tracklist";
 import ImageWithMagnificationComponent from "./image-with-magnification";
+import VideoBlock from "./video";
 
 type StackProps = {
   blocks: ContentBlock[]
@@ -25,6 +26,8 @@ export default function StackComponent(props: StackProps): JSX.Element {
             return <SlideshowComponent key={index} block={block} />
           case "ImageWithMagnification":
             return <ImageWithMagnificationComponent key={index} block={block} />
+          case "Video":
+            return <VideoBlock key={index} block={block} />
           default:
             console.warn(`Unknown block: ${JSON.stringify(block, null, 2)}`);
             return null;

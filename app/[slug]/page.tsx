@@ -34,7 +34,7 @@ export default async function Page({
   console.log(page.date)
 
   return (
-    <div className="w-full max-w-[1280px] mx-auto px-4 py-10">
+    <div className="w-full max-w-[1000px] px-4 py-6">
       <Switch<LayoutType> test={layoutType}>
 
         <Case<LayoutType> value={LayoutType.OneColumn}>
