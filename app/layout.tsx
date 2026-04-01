@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en" className={openSans.className}>
       <body>
         <PrimaryNavigation />
-        <main className="md:ml-72">
+        <main className="md:ml-[432px]">
           {children}
         </main>
         <AudioPlayerComponent />

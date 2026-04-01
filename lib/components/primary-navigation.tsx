@@ -4,9 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-const navLinks = [
-  { href: "/profile", label: "Profile", icon: "/user.svg" },
-];
+const navLinks: { href: string; label: string; icon: string }[] = [];
 
 export default function PrimaryNavigation() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,14 +12,14 @@ export default function PrimaryNavigation() {
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="hidden md:flex flex-col fixed left-0 top-0 h-full w-72 z-40 px-6 py-8">
+      <aside className="hidden md:flex flex-col fixed left-0 top-0 h-full w-[432px] z-40 px-6 py-8">
         <Link href="/" className="block">
           <Image
             src="/logo.svg"
             alt="Logo"
             width={120}
             height={40}
-            className="w-full h-auto dark:invert"
+            className="w-3/4 h-auto dark:invert"
           />
         </Link>
         <nav className="mt-auto flex flex-col gap-3">
